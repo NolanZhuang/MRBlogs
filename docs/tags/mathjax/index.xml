@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MathJax on My New Hugo Site</title>
+    <link>https://NolanZhuang.github.io/MRBlogs/tags/mathjax/</link>
+    <description>Recent content in MathJax on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://NolanZhuang.github.io/MRBlogs/tags/mathjax/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MathJax</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/mathjax/</link>
+      <pubDate>Mon, 23 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/mathjax/</guid>
+      <description>&lt;p&gt;MathJax JavaScript library allows you to include mathematics in your web pages for viewing in any modern browser.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

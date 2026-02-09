@@ -1,0 +1,6 @@
+publishDir = "docs"
+baseURL = 'https://NolanZhuang.github.io/MRBlogs/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+
+theme = "Binario-master"
