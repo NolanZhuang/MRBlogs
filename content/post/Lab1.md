@@ -1,5 +1,6 @@
 ---
 title: "Lab Homework 1: Setup Blog"
+slug: "lab1"
 date: 2025-12-01
 weight: 5
 author: Yan Zhuang

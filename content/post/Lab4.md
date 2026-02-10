@@ -1,5 +1,6 @@
 ---
 title: "Lab Homework 4: Unity Roll-A-Ball in VR"
+slug: "lab4"
 date: 2025-12-22
 weight: 8
 author: Yan Zhuang

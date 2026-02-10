@@ -1,5 +1,6 @@
 ---
 title: "Lab Homework 3: Unity Roll-A-Ball"
+slug: "lab3"
 date: 2025-12-17
 weight: 7
 author: Yan Zhuang

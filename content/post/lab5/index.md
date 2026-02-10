@@ -1,5 +1,6 @@
 ---
 title: "Lab Homework 5: Locomotion technique Implementation"
+slug: "lab5"
 date: 2026-02-09
 weight: 9
 author: Yan Zhuang

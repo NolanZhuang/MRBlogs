@@ -1,5 +1,6 @@
 ---
 title: "Lecture Homework 1: Sketch and present 3 ideas for Locomotion in VR"
+slug: "lecture1"
 date: 2025-12-09
 weight: 1
 author: Yan Zhuang

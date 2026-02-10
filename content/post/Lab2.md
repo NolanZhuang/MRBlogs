@@ -1,5 +1,6 @@
 ---
 title: "Lab Homework 2: Setup Unity"
+slug: "lab2"
 date: 2025-12-01
 weight: 6
 author: Yan Zhuang
