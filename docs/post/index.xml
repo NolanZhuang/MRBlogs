@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on HCI for MR blogs - Yan Zhuang</title>
+    <link>https://NolanZhuang.github.io/MRBlogs/post/</link>
+    <description>Recent content in Posts on HCI for MR blogs - Yan Zhuang</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://NolanZhuang.github.io/MRBlogs/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lecture Homework 1: Sketch and present 3 ideas for Locomotion in VR</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lecture1/</link>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lecture1/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;In the scenario, the user starts in a &lt;strong&gt;ground view&lt;/strong&gt; with the nearby environment visible. At some point, they want to see something far away, so they need to move to a &lt;strong&gt;sky view&lt;/strong&gt; (a higher vantage point) to observe a larger area. A key constraint in this scenario is that &lt;strong&gt;the movement is passive&lt;/strong&gt;: the system moves the user rather than the user actively walking/joysticking.&lt;/p&gt;&#xA;&lt;p&gt;This is an interesting locomotion problem in VR because passive motion can easily increase discomfort and reduce spatial understanding. The slides propose three techniques to handle this “ground → sky” transition, each with different trade-offs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture Homework 2: Locomotion Pitch</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lecture2/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lecture2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This blog introduces my locomotion technique idea  which is called &lt;strong&gt;Rhythmic Skateboarding&lt;/strong&gt;. It introduces a VR locomotion method that combines rhythm, spatial markers, and embodied interaction to create an engaging movement experience while reducing motion sickness.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-core-mechanism&#34;&gt;1. Core Mechanism&lt;/h2&gt;&#xA;&lt;p&gt;The core idea of Rhythmic Skateboarding is to turn locomotion into an &lt;strong&gt;active, rhythm-driven process&lt;/strong&gt; rather than a passive one.&lt;/p&gt;&#xA;&lt;p&gt;Key principles include:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The user always moves forward along the center of the route&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Movement speed gradually decreases if the user takes no action&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Multiple &lt;strong&gt;markers&lt;/strong&gt; are placed along the path&lt;/li&gt;&#xA;&lt;li&gt;When the user enters a marker’s effective range and performs the corresponding action:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Speed increases&lt;/li&gt;&#xA;&lt;li&gt;Additional effects may be triggered, such as steering, jumping, or body tilting&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This design encourages continuous engagement and makes movement feel intentional and skill-based.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture Homework 3: Evaluate your Locomotion Technique</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lecture3/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lecture3/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This blog post presents the evaluation of the final VR locomotion technique. The goal of this user study was to better understand how the locomotion system performs when used by multiple users, focusing on performance, comfort, workload, presence, and enjoyment.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-study-design&#34;&gt;1. Study Design&lt;/h2&gt;&#xA;&lt;p&gt;To avoid bias from self-testing alone, a small-scale user study was conducted.&lt;/p&gt;&#xA;&lt;h3 id=&#34;participants&#34;&gt;Participants&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;3 participants total&lt;/strong&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 male, 1 female&lt;/li&gt;&#xA;&lt;li&gt;Average age: &lt;strong&gt;25.3 years&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;All participants had &lt;strong&gt;prior VR experience&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Each participant completed the same locomotion task using the Rhythmic Skateboarding technique. Data from all three users (including the designer) were recorded and averaged.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture Homework 4: Final Presentation</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lecture4/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lecture4/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This blog post presents the final design and evaluation of a VR locomotion technique inspired by the core interaction of &lt;strong&gt;Angry Birds&lt;/strong&gt;. The goal of this project was to explore an alternative, physics-inspired approach to locomotion that emphasizes direct manipulation, player agency, and playful experimentation.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-design-ideation-angry-birds-as-inspiration&#34;&gt;1. Design Ideation: Angry Birds as Inspiration&lt;/h2&gt;&#xA;&lt;p&gt;The initial idea for this locomotion system was inspired by the familiar &lt;em&gt;pull-and-release&lt;/em&gt; mechanic from &lt;strong&gt;Angry Birds&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab Homework 1: Setup Blog</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lab1/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lab1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In this blog post, I reflect on my experience as a student building and deploying my first blog using &lt;strong&gt;Hugo&lt;/strong&gt; and &lt;strong&gt;GitHub Pages&lt;/strong&gt;. Although Hugo is a static site generator, the process taught me a lot about project structure, configuration, and deployment workflows.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;how-i-approached-this-task&#34;&gt;How I Approached This Task&lt;/h2&gt;&#xA;&lt;p&gt;I approached this task step by step. First, I focused on installing Hugo correctly and making sure it worked locally. After that, I created a new Hugo site and selected an existing theme instead of designing everything from scratch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab Homework 2: Setup Unity</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lab2/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lab2/</guid>
+      <description>&lt;h2 id=&#34;what-i-was-trying-to-do&#34;&gt;What I was trying to do&lt;/h2&gt;&#xA;&lt;p&gt;My goal was to set up &lt;strong&gt;Unity 6 (6000.0.60f1)&lt;/strong&gt; and follow Unity’s beginner workflow to build a &lt;strong&gt;simple first 3D scene&lt;/strong&gt;: a ground plane, a few objects, basic lighting, and a camera view that looks “game-like” when I press Play.&lt;/p&gt;&#xA;&lt;p&gt;I treated it like a small checklist: &lt;strong&gt;install → create project → build scene → press Play → save&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;how-i-approached-the-task&#34;&gt;How I approached the task&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-install-unity-6-6000060f1-via-unity-hub&#34;&gt;1 Install Unity 6 (6000.0.60f1) via Unity Hub&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Installed &lt;strong&gt;Unity Hub&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;In Hub → &lt;strong&gt;Installs&lt;/strong&gt; → &lt;strong&gt;Install Editor&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Selected &lt;strong&gt;6000.0.60f1&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Included:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Microsoft Visual Studio&lt;/strong&gt; (for C# scripting later)&lt;/li&gt;&#xA;&lt;li&gt;Any platform modules I might need later (Android/WebGL/etc.)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;2-create-a-new-3d-project&#34;&gt;2 Create a new 3D project&lt;/h3&gt;&#xA;&lt;p&gt;In Unity Hub → &lt;strong&gt;Projects&lt;/strong&gt; → &lt;strong&gt;New Project&lt;/strong&gt;:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab Homework 3: Unity Roll-A-Ball</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lab3/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lab3/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In this blog post, I describe my experience implementing Unity’s official beginner tutorial &lt;strong&gt;Roll-a-Ball&lt;/strong&gt;. The goal of the task is to build a small 3D game where the player controls a rolling ball, collects pickups, and tracks a score. This task helped me understand core Unity concepts such as physics, scripting, input, and UI.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;how-i-approached-the-task&#34;&gt;How I Approached the Task&lt;/h2&gt;&#xA;&lt;p&gt;I followed the tutorial step by step and focused on understanding &lt;em&gt;why&lt;/em&gt; each component was added rather than only copying instructions. My workflow was:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab Homework 4: Unity Roll-A-Ball in VR</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lab4/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lab4/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;After completing the classic &lt;strong&gt;Roll-a-Ball&lt;/strong&gt; Unity tutorial, the next step was to upgrade the project into a &lt;strong&gt;VR&lt;/strong&gt; experience. Using the workflow provided in the course slides, I transformed the original desktop-based game into an immersive VR application where the player can interact with the Roll-a-Ball scene using VR controllers.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;how-i-approached-the-task&#34;&gt;How I Approached the Task&lt;/h2&gt;&#xA;&lt;p&gt;Rather than rebuilding everything from scratch, I reused as much of the original Roll-a-Ball project as possible. My approach was:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab Homework 5: Locomotion technique Implementation</title>
+      <link>https://NolanZhuang.github.io/MRBlogs/post/lab5/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://NolanZhuang.github.io/MRBlogs/post/lab5/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In this blog post, I describe my implementation of locomotion technique. The idea originated from the game Angry Birds, where players can pull a slingshot in different directions and with different force to send birds flying in different trajectories to attack enemies. In my locomotion technique, the difference is player do not send birds flying anymore, instead, they send themselves. The goal of this project is to create an immersive and enjoyable VR experience.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
