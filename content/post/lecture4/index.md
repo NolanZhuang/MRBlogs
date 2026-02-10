@@ -1,6 +1,7 @@
 ---
 title: "Lecture Homework 4: Final Presentation"
 slug: "lecture4"
+url: "/post/lecture4/"
 date: 2026-02-09
 weight: 4
 author: Yan Zhuang

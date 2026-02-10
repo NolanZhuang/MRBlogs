@@ -1,6 +1,7 @@
 ---
 title: "Lecture Homework 3: Evaluate your Locomotion Technique"
 slug: "lecture3"
+url: "/post/lecture3/"
 date: 2026-02-09
 weight: 3
 author: Yan Zhuang

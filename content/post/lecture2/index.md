@@ -1,6 +1,7 @@
 ---
 title: "Lecture Homework 2: Locomotion Pitch"
 slug: "lecture2"
+url: "/post/lecture2/"
 date: 2026-01-20
 weight: 2
 author: Yan Zhuang
