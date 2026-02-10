@@ -134,10 +134,6 @@ It is especially well-suited for:
 
 ---
 
-*Content adapted from the course material: Project Locomotion Technique – Rhythmic Skateboarding*
-
----
-
 ## Feedback
 
 Too simple, so I changed the idea, see Final Presentation
