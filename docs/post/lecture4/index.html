@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head><script src="/MRBlogs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=MRBlogs/livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Lecture Homework 4: Final Presentation | HCI for MR blogs - Yan Zhuang</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="stylesheet" href="/MRBlogs/css/bundle.css">
+	<link rel="icon" href="/MRBlogs/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/MRBlogs/icons/32.png" sizes="32x32" type="image/png">
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/MRBlogs/">HCI for MR blogs - Yan Zhuang</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+		<div class="single block">
+			<article class="entry">
+				<h1 class="entry__title">Lecture Homework 4: Final Presentation</h1>
+				<div class="entry__content"><h2 id="introduction">Introduction</h2>
+<p>This blog post presents the final design and evaluation of a VR locomotion technique inspired by the core interaction of <strong>Angry Birds</strong>. The goal of this project was to explore an alternative, physics-inspired approach to locomotion that emphasizes direct manipulation, player agency, and playful experimentation.</p>
+<hr>
+<h2 id="1-design-ideation-angry-birds-as-inspiration">1. Design Ideation: Angry Birds as Inspiration</h2>
+<p>The initial idea for this locomotion system was inspired by the familiar <em>pull-and-release</em> mechanic from <strong>Angry Birds</strong>.</p>
+<p>Instead of traditional joystick-based movement, locomotion is driven by:</p>
+<ul>
+<li>Stretching (pulling) an object</li>
+<li>Releasing it to generate motion</li>
+</ul>
+<p>This metaphor was chosen because it is:</p>
+<ul>
+<li>Intuitive and playful</li>
+<li>Closely tied to physical action</li>
+<li>Easy to understand without complex instructions</li>
+</ul>
+<hr>
+<h2 id="2-implementation-overview">2. Implementation Overview</h2>
+<h3 id="interactive-objects">Interactive Objects</h3>
+<p>Several interactive objects (white spheres) are placed throughout the scene. These objects act as locomotion anchors.</p>
+<h3 id="locomotion-mechanics">Locomotion Mechanics</h3>
+<ul>
+<li>Players can <strong>grab and pull</strong> an object to build up speed</li>
+<li><strong>Pulling distance</strong> determines the <em>magnitude</em> of the speed</li>
+<li><strong>Head/gaze direction</strong> determines the <em>direction</em> of movement</li>
+</ul>
+<p>Additional behaviors include:</p>
+<ul>
+<li>Looking upward beyond a certain angle allows <strong>diagonal upward movement</strong>, enabling jumping</li>
+<li>While moving, if the player grabs another object, movement <strong>immediately stops</strong> next to it</li>
+<li>When no interaction occurs, movement speed <strong>gradually decreases</strong>, preventing abrupt stops</li>
+</ul>
+<p>This creates a locomotion system that blends physics-based motion with embodied interaction.</p>
+<hr>
+<h2 id="3-design-challenges">3. Design Challenges</h2>
+<p>While the interaction was engaging, several challenges emerged during development.</p>
+<h3 id="direction-mapping">Direction Mapping</h3>
+<p>A major design question was:</p>
+<ul>
+<li>Should the movement direction follow the <strong>pull direction</strong>, or the <strong>player’s viewing direction</strong>?</li>
+</ul>
+<p>Using gaze direction improved spatial awareness but also increased cognitive load.</p>
+<h3 id="control-difficulty">Control Difficulty</h3>
+<p>Participants reported that:</p>
+<ul>
+<li>The system was <strong>very hard to control</strong>, especially for precise navigation</li>
+<li>Small differences in pulling distance or object placement had large effects on movement</li>
+</ul>
+<p>These challenges highlight the trade-off between expressive control and usability.</p>
+<hr>
+<h2 id="4-evaluation-method">4. Evaluation Method</h2>
+<p>A small user study was conducted to evaluate the system with multiple users.</p>
+<h3 id="participants">Participants</h3>
+<ul>
+<li><strong>3 participants</strong>
+<ul>
+<li>2 male, 1 female</li>
+<li>Average age: <strong>25.3 years</strong></li>
+<li>All had prior VR experience</li>
+</ul>
+</li>
+</ul>
+<p>Each participant completed the same task using the locomotion technique, and results were averaged.</p>
+<hr>
+<h2 id="5-results">5. Results</h2>
+<h3 id="objective-metrics">Objective Metrics</h3>
+<ul>
+<li><strong>Average time per round:</strong> <strong>581 seconds</strong></li>
+<li><strong>Average accuracy per round:</strong> <strong>63.7 / 68</strong></li>
+</ul>
+<h3 id="subjective-metrics-110-scale">Subjective Metrics (1–10 scale)</h3>
+<ul>
+<li><strong>Motion sickness:</strong> <strong>4</strong></li>
+<li><strong>Task workload:</strong> <strong>8.3</strong></li>
+<li><strong>Presence:</strong> <strong>7.7</strong></li>
+<li><strong>Enjoyment:</strong> <strong>7</strong></li>
+</ul>
+<hr>
+<h2 id="6-discussion">6. Discussion</h2>
+<p>The results suggest a clear pattern:</p>
+<ul>
+<li><strong>Low motion sickness</strong> indicates that gradual acceleration and deceleration helped maintain comfort</li>
+<li><strong>High workload</strong> reflects the system’s demand for precision and continuous attention</li>
+<li><strong>Strong presence and enjoyment</strong> show that players felt immersed and engaged despite the difficulty</li>
+</ul>
+<p>A consistent qualitative takeaway was:</p>
+<blockquote>
+<p><strong>“Enjoyable but quite hard to master.”</strong></p>
+</blockquote>
+<p>Performance was also <strong>strongly influenced by the size and placement of interactive objects</strong>, emphasizing how critical spatial layout is in object-driven locomotion systems.</p>
+<hr>
+<h2 id="7-conclusion-and-future-work">7. Conclusion and Future Work</h2>
+<p>This Angry Birds–inspired locomotion technique demonstrates that:</p>
+<ul>
+<li>Physics-based, object-driven movement can be highly engaging</li>
+<li>Increased player agency often comes with higher cognitive and physical demands</li>
+<li>Careful tuning is essential to balance expressiveness and control</li>
+</ul>
+<p>Potential future improvements include:</p>
+<ul>
+<li>Adaptive scaling of pulling strength</li>
+<li>Visual previews of movement trajectories</li>
+<li>Improved object placement and spacing guidelines</li>
+</ul>
+<p>Overall, this project shows that unconventional locomotion metaphors can offer compelling alternatives to standard VR movement techniques—especially when exploration and playfulness are key design goals.</p>
+<p>You can find the slides in the following address:
+<a href="https://docs.google.com/presentation/d/1y8KI89u7LLW6RgMuevrOSQLwFNj6Cqqm/edit?usp=drive_link&amp;ouid=105344196558666390232&amp;rtpof=true&amp;sd=true">Final Presentation</a></p>
+</div>
+				
+			</article>
+		</div>
+	</main>
+	
+	
+
+
+
+	
+
+	</div>
+	<footer class="footer">
+	<div class="footer__copyright">© 2026 HCI for MR blogs - Yan Zhuang. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 publishDir = "docs"
 baseURL = 'https://NolanZhuang.github.io/MRBlogs/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'HCI for MR blogs - Yan Zhuang'
 
 theme = "Binario-master"

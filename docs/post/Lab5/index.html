@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head><script src="/MRBlogs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=MRBlogs/livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Lab Homework 5: Locomotion technique Implementation | HCI for MR blogs - Yan Zhuang</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="stylesheet" href="/MRBlogs/css/bundle.css">
+	<link rel="icon" href="/MRBlogs/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/MRBlogs/icons/32.png" sizes="32x32" type="image/png">
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/MRBlogs/">HCI for MR blogs - Yan Zhuang</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+		<div class="single block">
+			<article class="entry">
+				<h1 class="entry__title">Lab Homework 5: Locomotion technique Implementation</h1>
+				<div class="entry__content"><h2 id="introduction">Introduction</h2>
+<p>In this blog post, I describe my implementation of locomotion technique. The idea originated from the game Angry Birds, where players can pull a slingshot in different directions and with different force to send birds flying in different trajectories to attack enemies. In my locomotion technique, the difference is player do not send birds flying anymore, instead, they send themselves. The goal of this project is to create an immersive and enjoyable VR experience.</p>
+<p><img src="birds.png" alt="Angry Birds"></p>
+<hr>
+<h2 id="how-i-approached-the-task">How I Approached the Task</h2>
+<p>I implemented my project step by step. My workflow was:</p>
+<ol>
+<li>Set up the scene and player.</li>
+<li>Create interactive object prefab.</li>
+<li>Implement the core locomotion mechanism.</li>
+<li>Test with different parameters and interactive object placements.</li>
+</ol>
+<hr>
+<h2 id="scene-and-player-setup">Scene and Player Setup</h2>
+<p>I kept the original scene setup and made sure they have colliders to support correct collision with player.</p>
+<h3 id="player">Player</h3>
+<ul>
+<li>Enable <strong>Use Gravity</strong> and disable <strong>Is Kinematic</strong> in <strong>Rigidbody</strong> to ensure it will fall naturally due to gravity.</li>
+<li>Froze rotation of the player.</li>
+<li>Added <strong>Box Collider</strong> components to left and right hands to enable collision detection with interactive objects.</li>
+</ul>
+<hr>
+<h2 id="interactive-object-prefab-creation">Interactive object prefab creation</h2>
+<p>Interactive objects primarily serve two functions: one is to detect whether the player&rsquo;s controller is within the object&rsquo;s range, and the other is to highlight the object when the player&rsquo;s controller is within the object&rsquo;s range. For simplicity, I used a white sphere as the appearance of the interactive object, without adding any special shapes or materials.</p>
+<p>To achieve the first function, I added a <strong>Sphere Collider</strong> component to the object and used collision detection to determine whether the player&rsquo;s controllers is within the object&rsquo;s range. Meanwhile, I enabled <strong>Is Trigger</strong> within <strong>Sphere Collider</strong> to avoid the impact of realistic collisions on player movement.</p>
+<p>To achieve the second function, I wrote a simple code. When a collision is detected, it will replace the color of the object&rsquo;s current material with a different one to achieve a simple highlight effect. (Although the final version has not yet been integrated and used)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetHighlight(<span style="color:#66d9ef">bool</span> highlight)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (rend == <span style="color:#66d9ef">null</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    isHighlighted = highlight;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (highlight)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        rend.material.color = Color.yellow;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        rend.material = originalMaterial;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="locomotion-implementation">Locomotion Implementation</h2>
+<p>This project uses a <strong>hand-pull + release-boost</strong> locomotion technique for VR. The idea is simple: when the player holds the <strong>index trigger</strong> near a interactive object, they “grab” and move themselves by pulling their hand. When they release the trigger after a sufficiently large pull, they get a short <strong>boost</strong> in the direction they are looking.</p>
+<hr>
+<h3 id="1-trigger-gated-grabbing-entering-locomotion-mode">1 Trigger-gated grabbing (entering locomotion mode)</h3>
+<p>Locomotion only activates when the index trigger is pressed strongly and the hand is close to a valid surface. This avoids accidental movement when the player is just gesturing.</p>
+<hr>
+<h3 id="2-pull-locomotion--move-player-opposite-to-hand-motion-with-jitter-deadzone">2 Pull locomotion = move player opposite to hand motion (with jitter deadzone)</h3>
+<p>Once pulling starts, the code computes the hand’s per-frame displacement and moves the player in the <strong>opposite direction</strong> (like pulling on a rope). A small deadzone filters controller jitter.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>Vector3 frameMovement = currentWorldPos - leftHandLastWorldPos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (frameMovement.magnitude &gt; movementDeadzone)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    transform.position += -frameMovement;
+</span></span><span style="display:flex;"><span>    leftHandLastWorldPos = currentWorldPos;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Key parameter:</strong></p>
+<ul>
+<li><code>movementDeadzone</code> (default ~0.01 m) ignores tiny hand motion (tracking noise).
+<ul>
+<li><strong>Higher</strong> = steadier but less responsive</li>
+<li><strong>Lower</strong> = more responsive but may jitter</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-net-pull-distance--intent-detection-for-boost">3 Net pull distance = intent detection for boost</h3>
+<p>To decide whether a “pull” is strong enough to deserve a boost, the script tracks the <strong>net displacement</strong> from pull start to release (not just small per-frame motion).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>Vector3 totalMovement = finalWorldPos - leftPullStartPos;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> finalNetDistance = totalMovement.magnitude;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (finalNetDistance &gt;= minPullDistance)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    TriggerBoost(finalNetDistance, <span style="color:#e6db74">&#34;Left&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Key parameter:</strong></p>
+<ul>
+<li><code>minPullDistance</code> (e.g., 0.08 m) prevents micro-pulls from triggering boosts.
+<ul>
+<li><strong>Higher</strong> = fewer accidental boosts</li>
+<li><strong>Lower</strong> = easier to boost</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-boost-direction--hmd-forward-with-vertical-comfort-limits">4 Boost direction = HMD forward, with vertical comfort limits</h3>
+<p>Boosting uses the <strong>HMD forward vector</strong> so movement is head-relative (the user goes where they look). Vertical motion is constrained to avoid uncomfortable upward/downward acceleration. Only when the head-up angle exceeds a threshold <strong>verticalAngleLimit</strong> will vertical boost occur, resulting in a jumping effect.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>Vector3 lookDirection = hmd.transform.forward;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> verticalAngle = Vector3.Angle(lookDirection, Vector3.up);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (verticalAngle &gt; (<span style="color:#ae81ff">90</span> - verticalAngleLimit) &amp;&amp;
+</span></span><span style="display:flex;"><span>    verticalAngle &lt; (<span style="color:#ae81ff">90</span> + verticalAngleLimit))
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    lookDirection.y = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    lookDirection.Normalize();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (lookDirection.y &lt; <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    lookDirection.y = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    lookDirection.Normalize();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Key parameter:</strong></p>
+<ul>
+<li><code>verticalAngleLimit</code> controls the minimum head-up angle required for the jump.</li>
+</ul>
+<hr>
+<h3 id="5-boost-strength-and-duration-tuning-speed-vs-comfort">5 Boost strength and duration (tuning speed vs comfort)</h3>
+<p>The boost speed scales with how far the hand was pulled, then runs for a limited duration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">float</span> distanceFactor = Mathf.Clamp01(netPullDistance / <span style="color:#ae81ff">0.5f</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">float</span> boostSpeed = distanceFactor * maxBoostSpeed;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>boostTimer = boostDuration;
+</span></span><span style="display:flex;"><span>currentVelocity = lookDirection * boostSpeed;
+</span></span></code></pre></div><p><strong>Key parameters:</strong></p>
+<ul>
+<li><code>maxBoostSpeed</code>: upper limit of boost speed (comfort-critical; too high can cause sickness)</li>
+<li><code>boostDuration</code>: how long the boost lasts (shorter feels snappier; longer feels like gliding)</li>
+<li><code>maxSlideDistance</code>: safety limit so the player can’t drift too far while “grabbing”</li>
+</ul>
+<p>In practice, these parameters are the main comfort/feel controls: I tuned them by repeatedly testing in headset and looking for sudden acceleration or loss of spatial stability.</p>
+<h3 id="6-natural-speed-decay-friction-like-slowdown">6 Natural speed decay (friction-like slowdown)</h3>
+<p>To avoid the player sliding forever after a boost, velocity decays smoothly toward zero when the system is <strong>not boosting</strong> and <strong>not currently pulling</strong>. In the code, this is implemented with a <code>Lerp</code> toward <code>Vector3.zero</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (!isBoosting &amp;&amp; !leftHandPulling &amp;&amp; !rightHandPulling)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    currentVelocity = Vector3.Lerp(currentVelocity, Vector3.zero, <span style="color:#ae81ff">3f</span> * Time.deltaTime);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This behaves like a simple “air friction” model:</p>
+<ul>
+<li>movement gradually slows down,</li>
+<li>there is no sudden stop,</li>
+<li>comfort is improved because acceleration changes are smoother.</li>
+</ul>
+<h3 id="7-sudden-grab-stop-safety-brake-while-grabbing">7 Sudden grab stop (safety brake while grabbing)</h3>
+<p>When the player starts pulling (grabbing) with a hand, the code immediately clears any residual velocity so the player does not keep moving while trying to interact.</p>
+<p>Then, during grabbing, the system applies a stronger deceleration to quickly remove any remaining motion:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (isLeftGrabbing || isRightGrabbing)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    currentVelocity = Vector3.Lerp(currentVelocity, Vector3.zero, <span style="color:#ae81ff">10f</span> * Time.deltaTime);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (currentVelocity.magnitude &lt; <span style="color:#ae81ff">0.1f</span>)
+</span></span><span style="display:flex;"><span>        currentVelocity = Vector3.zero;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This “safety brake” is important in VR because:</p>
+<ul>
+<li>it keeps interaction stable (hands and target don’t drift away),</li>
+<li>it reduces unexpected motion while the player is focused on grabbing,</li>
+<li>it helps prevent motion discomfort caused by sliding during close-range interaction.</li>
+</ul>
+<hr>
+<h2 id="testing">Testing</h2>
+<p>In this part, I mainly tested the placement of interactive objects and 2 parameters <code>maxBoostSpeed</code> and <code>boostDuration</code> which are most related to the feeling during motion.</p>
+<p>The principle for placing interactive objects is to ensure that the player can collect every coin. Since movement cannot turn after releasing the object, each coin should be on a straight line formed by connecting two interactive objects.</p>
+<p>The most direct impression <code>maxBoostSpeed</code> and <code>boostDuration</code> give is the speed and the distance they glide after release the interactive object. The higher these values, the faster the speed, the farther the gliding distance, and the more difficult the movement is to control. When their values ​​are too small, it will prevent the player from reaching the location of the next interactive object.</p>
+<p>Here is the final parameter set that gives best experience during the testing:</p>
+<p><code>maxSlideDistance</code>: 1</p>
+<p><code>maxBoostSpeed</code>: 25</p>
+<p><code>boostDuration</code>: 1.36</p>
+<p><code>verticalAngleLimit</code>: 25</p>
+<p><code>minPullDistance</code>: 0.08</p>
+<p><code>movementDeadzone</code>: 0.01</p>
+<p>The following screenshot shows placement of interactive object (each white point indicates an interactive object):</p>
+<p><img src="scene.png" alt="Scene"></p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>This locomotion implementation combines <strong>hand-driven pulling</strong>, <strong>intent-based boost activation</strong>, and <strong>head-relative movement</strong>. By exposing parameters such as deadzones, pull thresholds, boost speed, duration, and slide limits, the system can be tuned to balance responsiveness and VR comfort.</p>
+<p>You can find the codes in the following address:
+<a href="https://github.com/NolanZhuang/HCIforMR-Project.git">GitHub Link</a></p>
+<p>You can also find a demo video here:
+<a href="https://drive.google.com/file/d/1Q2BJi5lyBd-Z02vhqvaSzt-UrtpZypQe/view?usp=drive_link">Video Link</a></p>
+</div>
+				
+			</article>
+		</div>
+	</main>
+	
+	
+
+
+
+	
+
+	</div>
+	<footer class="footer">
+	<div class="footer__copyright">© 2026 HCI for MR blogs - Yan Zhuang. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head><script src="/MRBlogs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=MRBlogs/livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Lecture Homework 1: Sketch and present 3 ideas for Locomotion in VR | HCI for MR blogs - Yan Zhuang</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="stylesheet" href="/MRBlogs/css/bundle.css">
+	<link rel="icon" href="/MRBlogs/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/MRBlogs/icons/32.png" sizes="32x32" type="image/png">
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/MRBlogs/">HCI for MR blogs - Yan Zhuang</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+		<div class="single block">
+			<article class="entry">
+				<h1 class="entry__title">Lecture Homework 1: Sketch and present 3 ideas for Locomotion in VR</h1>
+				<div class="entry__content"><h2 id="background">Background</h2>
+<p>In the scenario, the user starts in a <strong>ground view</strong> with the nearby environment visible. At some point, they want to see something far away, so they need to move to a <strong>sky view</strong> (a higher vantage point) to observe a larger area. A key constraint in this scenario is that <strong>the movement is passive</strong>: the system moves the user rather than the user actively walking/joysticking.</p>
+<p>This is an interesting locomotion problem in VR because passive motion can easily increase discomfort and reduce spatial understanding. The slides propose three techniques to handle this “ground → sky” transition, each with different trade-offs.</p>
+<p>A ground view may look like:</p>
+<p><img src="ground.png" alt="Ground View"></p>
+<p>A sky view may look like:</p>
+<p><img src="sky.png" alt="Sky View"></p>
+<hr>
+<h2 id="technique-1-suddenly-jump">Technique 1: Suddenly Jump</h2>
+<p><strong>Idea:</strong> No continuous motion is shown. The experience is segmented by fades.</p>
+<p><strong>How it works (from the slides):</strong></p>
+<ol>
+<li>The ground view <strong>fades to black</strong>.</li>
+<li>The view stays <strong>totally black</strong> briefly.</li>
+<li>The black view <strong>fades back in</strong> to the sky view.</li>
+<li>The user never sees motion between start and end (“No movement”).</li>
+</ol>
+<p><strong>Why it might help:</strong><br>
+Because the user does not visually experience motion, the visual-vestibular mismatch is reduced, which can improve comfort for some users.</p>
+<p><strong>Main limitation:</strong><br>
+The user loses all motion cues. This can weaken spatial awareness (e.g., “Where did I come from?”) and make the transition feel like a teleport cut.</p>
+<hr>
+<h2 id="technique-2-bystander">Technique 2: Bystander</h2>
+<p><strong>Idea:</strong> The user remains stationary, but watches an <strong>avatar</strong> travel along the path first, so the system can “explain” the movement before switching viewpoints.</p>
+<p><strong>How it works (from the slides):</strong></p>
+<ol>
+<li>The user stays in the ground view and watches an animation of an avatar (yellow capsule) moving along a trajectory (red line).</li>
+<li>The avatar starts from the user’s position and travels to the end point.<br>
+This implies: “you are the avatar and you will move along this trajectory.”</li>
+<li>When the animation ends, the view <strong>fades to black</strong> and then <strong>fades in</strong> to the sky view (still “No movement” experienced by the user directly).</li>
+</ol>
+<p><strong>Why it might help:</strong><br>
+It provides <strong>path information</strong> (trajectory and direction) without forcing the user to visually experience continuous self-motion. This can preserve spatial understanding better than a pure jump.</p>
+<p><strong>Main limitation:</strong><br>
+The user still does not feel/see themselves moving. Also, the technique depends on users correctly interpreting the avatar as “me.”</p>
+<p>The following image is a screen shot during Bystander method:</p>
+<p><img src="bystander.png" alt="Bystander"></p>
+<hr>
+<h2 id="technique-3-tunnel-vision">Technique 3: Tunnel Vision</h2>
+<p><strong>Idea:</strong> Show continuous motion, but reduce discomfort by limiting motion to a smaller central area while keeping the periphery stable.</p>
+<p><strong>How it works (from the slides):</strong></p>
+<ol>
+<li>The user experiences the movement from ground to sky.</li>
+<li>A <strong>tunnel opens at the center</strong> of the view. The user can only see the motion inside this tunnel.</li>
+<li>The <strong>outer part</strong> of the view stays static and continues showing the ground view.</li>
+<li>When movement ends, the outer part of the tunnel <strong>fades out</strong>, revealing the full sky view.</li>
+</ol>
+<p><strong>Why it might help:</strong><br>
+This technique reduces motion sickness by stabilizing peripheral vision (a common comfort strategy). At the same time, it preserves some <strong>continuous motion cues</strong>, which can support orientation.</p>
+<p><strong>Main limitation:</strong><br>
+It can feel visually artificial, and it may reduce situational awareness during the transition because the user’s effective field of view is temporarily restricted.</p>
+<p>The following image is a screen shot during Tunnel Vision method:</p>
+<p><img src="tunnel.png" alt="Tunnel"></p>
+<hr>
+<h2 id="evaluation-how-to-compare-the-techniques">Evaluation (How to Compare the Techniques)</h2>
+<p>The slides propose evaluating these techniques with both objective and subjective measures.</p>
+<h3 id="task-based-spatial-measure">Task-based spatial measure</h3>
+<p>After the user reaches the end point (sky view), ask them to <strong>find out the start point</strong> (where they came from).<br>
+This tests whether the locomotion method preserves the user’s spatial understanding of the environment and the path taken.</p>
+<h3 id="objective-metric">Objective metric</h3>
+<ul>
+<li><strong>Task completion time</strong>: how long it takes to identify/return to the start point (or indicate it correctly).</li>
+</ul>
+<h3 id="subjective-metric">Subjective metric</h3>
+<ul>
+<li><strong>Questionnaire</strong>: collect comfort and preference feedback (e.g., nausea, dizziness, perceived control, clarity of movement).</li>
+</ul>
+<p>You can find the slides in the following address:
+<a href="https://docs.google.com/presentation/d/1RqtAztxM7Qlg1F_CP0Eo_1WcrRcRL1hB/edit?usp=drive_link&amp;ouid=105344196558666390232&amp;rtpof=true&amp;sd=true">3 Locomotion Techniques</a></p>
+</div>
+				
+			</article>
+		</div>
+	</main>
+	
+	
+
+
+
+	
+
+	</div>
+	<footer class="footer">
+	<div class="footer__copyright">© 2026 HCI for MR blogs - Yan Zhuang. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head><script src="/MRBlogs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=MRBlogs/livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>Lab Homework 1: Setup Blog | HCI for MR blogs - Yan Zhuang</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="stylesheet" href="/MRBlogs/css/bundle.css">
+	<link rel="icon" href="/MRBlogs/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/MRBlogs/icons/32.png" sizes="32x32" type="image/png">
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/MRBlogs/">HCI for MR blogs - Yan Zhuang</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+		<div class="single block">
+			<article class="entry">
+				<h1 class="entry__title">Lab Homework 1: Setup Blog</h1>
+				<div class="entry__content"><h2 id="introduction">Introduction</h2>
+<p>In this blog post, I reflect on my experience as a student building and deploying my first blog using <strong>Hugo</strong> and <strong>GitHub Pages</strong>. Although Hugo is a static site generator, the process taught me a lot about project structure, configuration, and deployment workflows.</p>
+<hr>
+<h2 id="how-i-approached-this-task">How I Approached This Task</h2>
+<p>I approached this task step by step. First, I focused on installing Hugo correctly and making sure it worked locally. After that, I created a new Hugo site and selected an existing theme instead of designing everything from scratch.</p>
+<p>Once the site worked locally, I followed the deployment method introduced in the course slides, which uses GitHub Pages with the <code>docs/</code> folder.</p>
+<hr>
+<h2 id="problems-i-encountered-and-how-i-overcame-them">Problems I Encountered and How I Overcame Them</h2>
+<h3 id="downloading-the-wrong-hugo-package">Downloading the Wrong Hugo Package</h3>
+<p>One of the first problems I encountered was downloading the <strong>source code</strong> version of Hugo instead of the precompiled Windows executable. This resulted in a folder full of files but no <code>hugo.exe</code>, so I could not run Hugo from the command line.</p>
+<p>I solved this by downloading the correct file named similar to <code>hugo_extended_xxx_windows-amd64.zip</code> from the Hugo releases page and adding it to my system PATH.</p>
+<hr>
+<h3 id="theme-configuration-errors">Theme Configuration Errors</h3>
+<p>Another issue occurred when Hugo could not find the selected theme. This happened because the theme folder name did not exactly match the theme name specified in <code>hugo.toml</code>.</p>
+<p>Renaming the theme folder so that it matched the configuration file resolved the error. This helped me understand how strictly Hugo depends on correct naming and directory structure.</p>
+<hr>
+<h2 id="what-i-learned">What I Learned</h2>
+<p>The most important lesson from this task was understanding Hugo’s content structure. Each page on the website corresponds to a file inside the <code>content/</code> directory, while navigation menus only link to those pages.</p>
+<p>I also learned that small configuration details, such as folder names and URL paths, can have a significant impact on whether a site works correctly after deployment.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Overall, building and deploying a Hugo blog was a valuable learning experience. The process improved my understanding of static site generation, configuration management, and GitHub Pages deployment. For students attempting a similar project, I strongly recommend testing everything locally and paying close attention to configuration details.</p>
+</div>
+				
+			</article>
+		</div>
+	</main>
+	
+	
+
+
+
+	
+
+	</div>
+	<footer class="footer">
+	<div class="footer__copyright">© 2026 HCI for MR blogs - Yan Zhuang. <span class="footer__copyright-credits">Powered by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/vimux/binario" rel="nofollow noopener" target="_blank">Binario</a> theme.</span></div>
+</footer>
+</body>
+</html>
